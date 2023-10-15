@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,11 @@ require __DIR__.'/auth.php';
 
 Route::controller(AdminController::class)->group(function(){
     Route::get('admin/login','AdminLogin')->name('admin.login');
+    Route::get('admin/logout/view','LogoutView')->name('admin.logout.view');
+    Route::get('admin/dashboard','AdminDashboard')->name('admin.dashboard');
+});
+
+Route::controller(AuthController::class)->group(function(){
+    Route::get('admin/logout','logout')->name('admin.logout');
+
 });
