@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\AuthController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +45,9 @@ Route::controller(AdminController::class)->group(function(){
 Route::controller(AuthController::class)->group(function(){
     Route::get('admin/logout','logout')->name('admin.logout');
 
+});
+
+Route::controller(ManagerController::class)->group(function(){
+
+    Route::get('manager/dashboard','ManagerDashboard')->name('manager.dashboard');
 });

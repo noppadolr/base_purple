@@ -10,6 +10,9 @@
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.ico') }}">
+        <!-- Sweet Alert-->
+        <link href="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
 
         <!-- Plugins css -->
         <link href="{{ asset('admin/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
@@ -26,6 +29,7 @@
 
         <!-- Icons css -->
         <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('toastr.css') }}" rel="stylesheet" type="text/css" />
         @stack('css')
     </head>
 
@@ -64,6 +68,11 @@
 
         <!-- App js -->
         <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+        <!-- Sweet Alerts js -->
+        <script src="{{ asset('admin/assets/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
+
+        <!-- Sweet alert init js-->
+        <script src="{{ asset('admin/assets/js/pages/sweet-alerts.init.js') }}"></script>
 
         <!-- Plugins js-->
         <script src="{{ asset('admin/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
@@ -72,6 +81,29 @@
 
         <!-- Dashboar 1 init js-->
         <script src="{{ asset('admin/assets/js/pages/dashboard-1.init.js') }}"></script>
+        <script src="{{ asset('toastr.min.js') }}"></script>
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+               case 'info':
+               toastr.info(" {{ Session::get('message') }} ");
+               break;
+
+               case 'success':
+               toastr.success(" {{ Session::get('message') }} ");
+               break;
+
+               case 'warning':
+               toastr.warning(" {{ Session::get('message') }} ");
+               break;
+
+               case 'error':
+               toastr.error(" {{ Session::get('message') }} ");
+               break;
+            }
+            @endif
+           </script>
         @stack('scripts')
 
 
