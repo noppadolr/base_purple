@@ -15,15 +15,19 @@
             <img src="{{ asset('admin/assets/images/logo-sm.png') }}" alt="small logo" class="logo-sm">
         </a>
     </div>
+    @php
+    $id =\Illuminate\Support\Facades\Auth::user()->id;
+    $adminData = \App\Models\User::find($id);
 
+    @endphp
     <!-- menu-left -->
     <div class="scrollbar">
 
         <!-- User box -->
         <div class="user-box text-center">
-            <img src="{{ asset('admin/assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
+            <img src="{{ (!empty($adminData->photo))? url('upload/admin_image/'.$adminData->photo):url('upload/no_image.jpg') }}"" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
             <div class="dropdown">
-                <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">Geneva Kennedy</a>
+                <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">{{ $adminData->name }}</a>
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->
@@ -44,6 +48,7 @@
                         <span>Lock Screen</span>
                     </a>
 
+
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-log-out me-1"></i>
@@ -52,7 +57,7 @@
 
                 </div>
             </div>
-            <p class="text-muted mb-0">Admin Head</p>
+            <p class="text-muted mb-0"></p>
         </div>
 
         <!--- Menu -->

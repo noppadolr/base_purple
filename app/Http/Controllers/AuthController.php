@@ -15,5 +15,7 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect()->route('admin.logout.view');
-    }
+    }// End MEthod
+
+
 }

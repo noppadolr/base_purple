@@ -2,10 +2,7 @@
 @section('title','Admin Panel')
 @section('main')
 
-<div class="content-page">
 
-    <!-- ========== Topbar Start ========== -->
-    @include('admin.body.header')
 
     <!-- ========== Topbar End ========== -->
 
@@ -548,11 +545,21 @@
 
     </div> <!-- content -->
 
-    <!-- Footer Start -->
-    @include('admin.body.footer')
 
-    <!-- end Footer -->
 
-</div>
-
+@push('scripts')
+        <script type="text/javascript">
+        @if(Session::has('logedin'))
+        $(document).ready( function () {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login Complete !",
+                    showConfirmButton: !1,
+                    timer: 1500
+                });
+        });
+        @endif
+    </script>
+@endpush
 @endsection

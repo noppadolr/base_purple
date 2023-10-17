@@ -43,7 +43,10 @@
             @include('admin.body.sidebar')
 
             <!-- ========== Left menu End ========== -->
+            <div class="content-page">
 
+                <!-- ========== Topbar Start ========== -->
+                @include('admin.body.header')
 
 
 
@@ -57,7 +60,11 @@
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->
+                @include('admin.body.footer')
 
+                <!-- end Footer -->
+
+            </div>
         </div>
         <!-- END wrapper -->
 

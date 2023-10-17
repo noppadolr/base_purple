@@ -35,11 +35,18 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+Route::middleware(['auth','role:admin'])->group(function () {
+        Route::controller(AdminController::class)->group(function(){
+            Route::get('admin/dashboard','AdminDashboard')->name('admin.dashboard');
+            Route::get('admin/profile','AdminProfile')->name('admin.profile');
+        });
+});
 
 Route::controller(AdminController::class)->group(function(){
-    Route::get('admin/login','AdminLogin')->name('admin.login');
+    // Route::get('admin/login','AdminLogin')->name('admin.login');
     Route::get('admin/logout/view','LogoutView')->name('admin.logout.view');
-    Route::get('admin/dashboard','AdminDashboard')->name('admin.dashboard');
+    Route::get('admin/login','AdminLogin')->name('admin.login');
+
 });
 
 Route::controller(AuthController::class)->group(function(){
@@ -47,7 +54,9 @@ Route::controller(AuthController::class)->group(function(){
 
 });
 
-Route::controller(ManagerController::class)->group(function(){
 
+Route::middleware(['auth','role:manager'])->group(function () {
+Route::controller(ManagerController::class)->group(function(){
     Route::get('manager/dashboard','ManagerDashboard')->name('manager.dashboard');
+});
 });

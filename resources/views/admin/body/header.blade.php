@@ -21,7 +21,11 @@
             <button class="button-toggle-menu">
                 <i class="mdi mdi-menu"></i>
             </button>
+            @php
+            $id =\Illuminate\Support\Facades\Auth::user()->id;
+            $adminData = \App\Models\User::find($id);
 
+            @endphp
 
 
             <!-- Mega Menu Dropdown -->
@@ -354,9 +358,9 @@
             <!-- User Dropdown -->
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('admin/assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
+                    <img src="{{ (!empty($adminData->photo))? url('upload/admin_image/'.$adminData->photo):url('upload/no_image.jpg') }}" alt="user-image" class="rounded-circle">
                     <span class="ms-1 d-none d-md-inline-block">
-                        Geneva <i class="mdi mdi-chevron-down"></i>
+                        {{ $adminData->name }} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">

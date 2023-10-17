@@ -22,5 +22,11 @@ class AdminController extends Controller
     // $adminData = User::query()->find(Auth::user()->id);
     // dd($adminData);
     return view('admin.admin_dashboard');
-   }
+   }//End method
+
+    public function AdminProfile(){
+       $adminData = User::query()->find(Auth::user()->id);
+//       dd($adminData);
+       return view('admin.admin_profile');
+    }
 }
