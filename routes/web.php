@@ -42,6 +42,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
         });
 });
 
+
 Route::controller(AdminController::class)->group(function(){
     // Route::get('admin/login','AdminLogin')->name('admin.login');
     Route::get('admin/logout/view','LogoutView')->name('admin.logout.view');

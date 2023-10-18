@@ -68,7 +68,7 @@
                                 <div class="col-6">
                                     <div class="text-end">
                                         <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                                        <p class="text-muted mb-1 text-truncate">Today's Sales</p>
+                                        <p class="text-muted mb-1 text-truncate">Today&apos;s Sales</p>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
